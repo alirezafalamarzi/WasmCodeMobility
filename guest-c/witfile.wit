@@ -1,0 +1,12 @@
+package alireza:mypackage;
+
+world myworld {
+    record user-data {
+        first-name: string,
+        last-name: string,
+        age: u32,
+        grades: list<u32>,
+    }
+
+    export to-string: func(user1: user-data) -> user-data;
+}

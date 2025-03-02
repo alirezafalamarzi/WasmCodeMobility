@@ -1,0 +1,12 @@
+/home/alireza/Devel/github/cmpt400/host/target/debug/deps/libittapi-fce0c4abee54e10d.rmeta: /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/lib.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/collection_control.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/domain.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/event.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/jit.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/string.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/task.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/util.rs
+
+/home/alireza/Devel/github/cmpt400/host/target/debug/deps/ittapi-fce0c4abee54e10d.d: /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/lib.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/collection_control.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/domain.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/event.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/jit.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/string.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/task.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/util.rs
+
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/lib.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/collection_control.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/domain.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/event.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/jit.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/string.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/task.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ittapi-0.4.0/src/util.rs:

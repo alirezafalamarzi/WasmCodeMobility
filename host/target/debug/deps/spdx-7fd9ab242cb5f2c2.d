@@ -1,0 +1,12 @@
+/home/alireza/Devel/github/cmpt400/host/target/debug/deps/libspdx-7fd9ab242cb5f2c2.rmeta: /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/lib.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/error.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/expression.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/expression/minimize.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/expression/parser.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/identifiers.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/lexer.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/licensee.rs
+
+/home/alireza/Devel/github/cmpt400/host/target/debug/deps/spdx-7fd9ab242cb5f2c2.d: /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/lib.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/error.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/expression.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/expression/minimize.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/expression/parser.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/identifiers.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/lexer.rs /home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/licensee.rs
+
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/lib.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/error.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/expression.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/expression/minimize.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/expression/parser.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/identifiers.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/lexer.rs:
+/home/alireza/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spdx-0.10.8/src/licensee.rs:

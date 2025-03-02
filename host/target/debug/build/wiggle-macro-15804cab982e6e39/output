@@ -1,0 +1,2 @@
+cargo:rerun-if-changed=build.rs
+cargo:rustc-env=DEBUG_OUTPUT_DIR=/home/alireza/Devel/github/cmpt400/host/target/debug/build/wiggle-macro-15804cab982e6e39/out
