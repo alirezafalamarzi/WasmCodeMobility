@@ -1,10 +1,5 @@
 use std::collections::HashMap;
-use std::fs::{File, OpenOptions};
-use std::io::{Read, Write};
 use serde::{Serialize, Deserialize};
-use std::net::TcpStream;
-use std::io::prelude::*;
-use url::Url;
 
 #[derive(Serialize, Deserialize)]
 struct CacheEntry {
@@ -105,45 +100,6 @@ impl FileCache {
         self.save_cache(&data);
     }
 
-    pub fn manual_get(&self, url: &str) -> Option<String> {
-        // Parse the URL
-        let url = Url::parse(url).ok()?;
-        let host = url.host_str()?;
-        let port = url.port_or_known_default()?;
-        let addr = format!("{}:{}", host, port);
-
-        // Determine the path (and query, if any)
-        let mut path = url.path().to_string();
-        if let Some(query) = url.query() {
-            path.push('?');
-            path.push_str(query);
-        }
-        if path.is_empty() {
-            path = "/".to_string();
-        }
-
-        // Connect to the host
-        let mut stream = TcpStream::connect(&addr).ok()?;
-
-        // Construct a minimal HTTP GET request.
-        let request = format!(
-            "GET {} HTTP/1.1\r\nHost: {}\r\nConnection: close\r\n\r\n",
-            path, host
-        );
-        stream.write_all(request.as_bytes()).ok()?;
-
-        // Read the entire response.
-        let mut response = Vec::new();
-        stream.read_to_end(&mut response).ok()?;
-        let response = String::from_utf8(response).ok()?;
-
-        // Separate HTTP headers from the body.
-        if let Some(pos) = response.find("\r\n\r\n") {
-            let body = &response[(pos + 4)..];
-            return Some(body.to_string());
-        }
-        Some(response)
-    }
 }
 
 
@@ -181,32 +137,3 @@ impl Guest for MyHost {
 }
 
 export!(MyHost);
-
-
-
-
-
-// fn main() {
-//     // Specify the file where the cache will be stored.
-//     let file_path = "cache_data.json";
-
-//     let getter = Getter::new();
-//     // Use a URL as the key.
-//     let key = "https://www.example.com";
-//     // For demonstration, we use 0 as the current time so that the expiry check passes.
-//     let current_time = 0;
-
-//     match getter.get_or_fetch(file_path, key, current_time) {
-//         Some(response) => {
-//             println!("Response:\n{}", response);
-//         },
-//         None => {
-//             println!("Failed to fetch the response.");
-//         }
-//     }
-// }
-
-
-
-
-
