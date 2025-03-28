@@ -5,24 +5,16 @@ use wasmtime_wasi::{IoView, WasiCtx, WasiCtxBuilder, WasiView};
 
 use std::fs::{File, OpenOptions};
 use std::io::{Read, Write};
-use reqwest::blocking::Client;
 use serde_json::json;
 use std::io::{self, BufRead, BufReader};
-use serde::Deserialize;
 
-#[derive(Deserialize)]
-struct OllamaStreamChunk {
-    response: String,
-    done: Option<bool>,
-}
-
-bindgen!("myworld" in "../guest-gpt/wit/witfile.wit");
+bindgen!("chat" in "../guest/wit/witfile.wit");
 
 struct HostComponent;
 
 // Implementation of the host interface defined in the wit file.
 impl host::Host for HostComponent {
-    fn get_response(&mut self, model: String, prompt: String, context: Vec<u64>) -> Option<String> {
+    fn ask_model(&mut self, model: String, prompt: String, context: Vec<u64>) -> Option<String> {
         let client = reqwest::blocking::Client::new();
         let api_url = "http://localhost:11434/api/generate";
         let mut payload = json!({
@@ -98,7 +90,7 @@ impl WasiView for MyState {
 
 fn main() -> Result<(), Box<dyn Error>> {
     let engine = Engine::new(Config::new().wasm_component_model(true))?;
-    let bytes = fs::read("../guest-gpt/target/wasm32-wasip2/release/guest_cache.wasm")?;
+    let bytes = fs::read("../guest/target/wasm32-wasip2/release/guest_cache.wasm")?;
     let component = Component::new(&engine, &bytes)?;
     let wasi_ctx = WasiCtxBuilder::new().inherit_stdio().build();
 
@@ -112,28 +104,34 @@ fn main() -> Result<(), Box<dyn Error>> {
     wasmtime_wasi::add_to_linker_sync(&mut linker)?;
     host::add_to_linker(&mut linker, |state: &mut MyState| &mut state.host)?;
 
-    let functions = Myworld::instantiate(&mut store, &component, &linker)?;
+    let functions = Chat::instantiate(&mut store, &component, &linker)?;
+
 
 
     let stdin = io::stdin();
     let mut stdout = io::stdout();
     let mut handle = stdin.lock();
 
-    loop {
-        print!(">>> ");
-        stdout.flush().unwrap();
+    print!("Enter Model: ");
+    stdout.flush().unwrap();
 
-        let mut line = String::new();
-        let bytes_read = handle.read_line(&mut line).unwrap();
-        if bytes_read == 0 {
-            println!("Exiting...");
-            break;
-        }
-        let result1 = functions.call_ask(&mut store, "./data.json", "mistral", &line);
-        match &result1 {
-            Ok(value) => println!("{:?}", value.as_ref().unwrap()),
-            Err(err) => println!("{:?}", err),
-        }
+    let mut model = String::new();
+    let bytes_read = handle.read_line(&mut model).unwrap();
+    if bytes_read == 0 {
+        println!("Exiting...");
+    }
+
+    print!(">>> ");
+    stdout.flush().unwrap();
+    let mut line = String::new();
+    let bytes_read = handle.read_line(&mut line).unwrap();
+    if bytes_read == 0 {
+        println!("Exiting...");
+    }
+    let result1 = functions.call_ask(&mut store, "./data.json", &model.trim(), &line);
+    match &result1 {
+        Ok(value) => println!("{:?}", value.as_ref().unwrap()),
+        Err(err) => println!("{:?}", err),
     }
 
     Ok(())

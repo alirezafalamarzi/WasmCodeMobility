@@ -1,7 +1,6 @@
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::VecDeque;
-use std::io::prelude::*;
 
 const MAX_ITEMS: usize = 1000;
 
@@ -144,7 +143,7 @@ impl FileCache {
 // Generate rust code from WIT
 wit_bindgen::generate!({
     path: "wit",
-    world: "myworld",
+    world: "chat",
 });
 
 // The exported host struct (For WIT)
@@ -162,7 +161,7 @@ impl Guest for MyHost {
         } else {
             let latest_context = cache.get_latest_context(&model).unwrap_or_default();
             // Get the response from the AI model
-            match host::get_response(&model, &prompt, &latest_context) {
+            match host::ask_model(&model, &prompt, &latest_context) {
 
                 Some(response_raw) => {
                     let (response, new_context) = cache.parse_ollama_stream(&response_raw);
