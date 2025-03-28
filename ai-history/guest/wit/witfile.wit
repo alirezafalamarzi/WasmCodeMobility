@@ -1,0 +1,10 @@
+package alireza:mypackage;
+
+world myworld {
+    import host: interface {
+      get-response: func(model: string, prompt: string, context: list<u64>) -> option<string>;
+      write-to-file: func(data: string, file-name: string);
+      read-from-file: func(file-name: string) -> string;
+    }
+    export ask: func(file-paht: string, model: string, prompt:string) -> option<string>;
+}

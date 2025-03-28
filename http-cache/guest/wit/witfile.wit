@@ -1,0 +1,11 @@
+package alireza:mypackage;
+
+world myworld {
+    import host: interface {
+        manual-get: func(url: string) -> option<string>;
+        write-to-file: func(data: string, file-name: string);
+        read-from-file: func(file-name: string) -> string;
+    }
+    export get-or-fetch: func(file-path: string, key: string, current-time: u64) -> option<string>;
+}
+

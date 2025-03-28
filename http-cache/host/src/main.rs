@@ -11,14 +11,9 @@ struct HostComponent;
 
 // Implementation of the host interface defined in the wit file.
 impl host::Host for HostComponent {
-    fn multiply(&mut self, a: f32, b: f32) -> f32 {
-        a * b
-    }
-
     fn manual_get(&mut self, url: String) -> Option<String> {
         // Send the GET request and return None if there's an error
-        let response = get(&url).ok()?
-;
+        let response = get(&url).ok()?;
 
         // Check that the request was successful
         if !response.status().is_success() {
@@ -72,7 +67,6 @@ impl WasiView for MyState {
 
 fn main() -> Result<(), Box<dyn Error>> {
     let engine = Engine::new(Config::new().wasm_component_model(true))?;
-    // let bytes = fs::read("../guest/target/wasm32-wasip2/release/guest.wasm")?;
     let bytes = fs::read("../guest-cache/target/wasm32-wasip2/release/guest_cache.wasm")?;
     let component = Component::new(&engine, &bytes)?;
     let wasi_ctx = WasiCtxBuilder::new().inherit_stdio().build();
@@ -91,7 +85,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     host::add_to_linker(&mut linker, |state: &mut MyState| &mut state.host)?;
 
     let functions = Myworld::instantiate(&mut store, &component, &linker)?;
-    let result1 = functions.call_get_or_fetch(&mut store, "./data.json", "http://localhost:8888", 1000);
+    let result1 = functions.call_get_or_fetch(&mut store, "./data.json", "http://localhost:8888", 0);
     let result2 = functions.call_get_or_fetch(&mut store, "./data.json", "http://localhost:8888/leisure_data.csv", 1000);
     let result3 = functions.call_get_or_fetch(&mut store, "./data.json", "http://localhost:8888/config.json", 1000);
     let result4 = functions.call_get_or_fetch(&mut store, "./data.json", "http://localhost:8888/chart.plugin.js", 1000);
@@ -104,8 +98,6 @@ fn main() -> Result<(), Box<dyn Error>> {
     println!("{:?}", result4.unwrap().unwrap());
     // println!("{:?}", result5.unwrap().unwrap());
 
-    // let mut host = HostComponent{};
-    // host.write_to_file(result5.unwrap().unwrap(), String::from("q1.jpg"));
     Ok(())
 }
 
